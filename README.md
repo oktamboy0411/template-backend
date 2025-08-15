@@ -1,4 +1,3 @@
-````markdown
 # Template Backend / Backend Shabloni
 
 Welcome to **template-backend**, a ready-to-use Node.js + TypeScript backend template.  
@@ -24,6 +23,7 @@ Welcome to **template-backend**, a ready-to-use Node.js + TypeScript backend tem
 git clone https://github.com/oktamboy0411/template-backend.git
 cd template-backend
 ```
+
 ````
 
 2. Install dependencies / Paketlarni o‘rnatish:
@@ -89,3 +89,4 @@ dist/               # Compiled TypeScript files
 ## License / Litsenziya
 
 MIT
+````

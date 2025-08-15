@@ -87,7 +87,3 @@ dist/               # Compiled TypeScript files
 ## License / Litsenziya
 
 MIT
-
-```
-
-```

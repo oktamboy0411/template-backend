@@ -24,8 +24,6 @@ git clone https://github.com/oktamboy0411/template-backend.git
 cd template-backend
 ```
 
-````
-
 2. Install dependencies / Paketlarni o‘rnatish:
 
 ```bash
@@ -89,4 +87,7 @@ dist/               # Compiled TypeScript files
 ## License / Litsenziya
 
 MIT
-````
+
+```
+
+```

@@ -1,0 +1,16 @@
+const prettierObj = {
+   singleQuote: false,
+   tabWidth: 3,
+   bracketSpacing: true,
+   trailingComma: "all",
+   arrowParens: "avoid",
+   useTabs: false,
+   printWidth: 80,
+   semi: false,
+   importOrder: ["^express$", "^[./]"],
+   importOrderSeparation: true,
+   importOrderSortSpecifiers: true,
+   plugins: ["@trivago/prettier-plugin-sort-imports"],
+}
+
+module.exports = prettierObj

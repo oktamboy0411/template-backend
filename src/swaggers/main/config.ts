@@ -1,4 +1,5 @@
 import { SwaggerType } from '../../types'
+import { PORT } from '../../utils'
 
 export const Swagger: SwaggerType = {
    openapi: '3.1.0',
@@ -13,7 +14,7 @@ export const Swagger: SwaggerType = {
    },
    servers: [
       {
-         url: 'http://localhost:3000',
+         url: `http://localhost:${PORT || 3000}`,
          description: 'Development server',
       },
       {

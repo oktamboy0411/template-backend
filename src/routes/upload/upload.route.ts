@@ -1,10 +1,13 @@
-import {Router} from 'express'
+import { Router } from "express"
 
-import {UploadController} from '../../controllers/upload'
-// import {authMiddleware} from '../../utils/auth.middleware'
-import {upload} from '../../utils/multer'
+import { UploadController } from "../../controllers/upload"
+import { upload } from "../../utils"
 
 export const uploadRouter = Router()
 
-uploadRouter.post('/file', upload.single('file'), UploadController.uploadFile)
-uploadRouter.post('/files', upload.array('files', 10), UploadController.uploadFiles)
+uploadRouter.post("/file", upload.single("file"), UploadController.uploadFile)
+uploadRouter.post(
+   "/files",
+   upload.array("files", 10),
+   UploadController.uploadFiles,
+)

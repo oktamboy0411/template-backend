@@ -1,24 +1,37 @@
-import {NextFunction, Request, Response} from 'express'
+import { NextFunction, Request, Response } from "express"
 
 interface CustomRequest extends Request {
-  user_id?: string
+   user_id?: string
 }
 
-type AsyncFunction = (req: CustomRequest, res: Response, next: NextFunction) => Promise<any>
-type NoAsyncFunction = (req: CustomRequest, res: Response, next: NextFunction) => any
+type AsyncFunction = (
+   req: CustomRequest,
+   res: Response,
+   next: NextFunction,
+) => Promise<any>
 
-export const asyncHandler = (fn: AsyncFunction) => async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    await fn(req, res, next)
-  } catch (error) {
-    next(error)
-  }
-}
+export const asyncHandler =
+   (fn: AsyncFunction) =>
+   async (req: CustomRequest, res: Response, next: NextFunction) => {
+      try {
+         await fn(req, res, next)
+      } catch (error) {
+         next(error)
+      }
+   }
 
-export const noAsyncHandler = (fn: NoAsyncFunction) => (req: Request, res: Response, next: NextFunction) => {
-  try {
-    fn(req, res, next)
-  } catch (error) {
-    next(error)
-  }
-}
+type NoAsyncFunction = (
+   req: CustomRequest,
+   res: Response,
+   next: NextFunction,
+) => any
+
+export const noAsyncHandler =
+   (fn: NoAsyncFunction) =>
+   (req: CustomRequest, res: Response, next: NextFunction) => {
+      try {
+         fn(req, res, next)
+      } catch (error) {
+         next(error)
+      }
+   }

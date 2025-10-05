@@ -7,11 +7,13 @@ import swaggerUi from "swagger-ui-express"
 import express, { Application, Request, Response, Router } from "express"
 
 import { Routes } from "./routes"
-import { noAsyncHandler } from "./utils/async-handler"
-import { CONNECT_DB } from "./utils/database.config"
-import { errorMiddleware } from "./utils/error.middleware"
-import { HttpException } from "./utils/http.exception"
-import { IP } from "./utils/secrets"
+import {
+   CONNECT_DB,
+   HttpException,
+   IP,
+   errorMiddleware,
+   noAsyncHandler,
+} from "./utils"
 
 export class App {
    public app: Application
@@ -22,6 +24,7 @@ export class App {
       void CONNECT_DB()
 
       this.initializeConfig()
+      this.initializeDocumentation()
       this.initializeControllers()
       this.initializeErrorHandling()
    }
@@ -66,7 +69,7 @@ export class App {
       })
       this.app.use("*", () => {
          throw new HttpException(
-            404,
+            StatusCodes.NOT_FOUND,
             ReasonPhrases.NOT_FOUND,
             "Endpoint not found!",
          )

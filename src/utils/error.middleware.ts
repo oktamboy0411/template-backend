@@ -10,21 +10,16 @@ export const errorMiddleware = (
    res: Response,
    next: NextFunction,
 ): any => {
-   try {
-      const statusCode = error.statusCode || StatusCodes.INTERNAL_SERVER_ERROR
-      const statusMsg = error.statusMsg || ReasonPhrases.INTERNAL_SERVER_ERROR
-      const msg = error.msg || error.message || ReasonPhrases.GATEWAY_TIMEOUT
+   const statusCode = error.statusCode || StatusCodes.INTERNAL_SERVER_ERROR
+   const statusMsg = error.statusMsg || ReasonPhrases.INTERNAL_SERVER_ERROR
+   const msg = error.msg || error.message || ReasonPhrases.GATEWAY_TIMEOUT
 
-      return res.status(statusCode).json({
-         success: false,
-         error: {
-            statusCode,
-            statusMsg,
-            msg,
-         },
-      })
-      next()
-   } catch (err) {
-      console.error(err)
-   }
+   return res.status(statusCode).json({
+      success: false,
+      error: {
+         statusCode,
+         statusMsg,
+         msg,
+      },
+   })
 }

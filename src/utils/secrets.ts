@@ -9,7 +9,6 @@ if (fs.existsSync(".env")) {
 
 const MONGO_URI = process.env.MONGO_URI as string
 const IP = (process.env.IP as string) || ""
-const ORIGIN = (process.env.ORIGIN as string) || []
 const PORT = parseInt(process.env.PORT as string, 10) || 8080
 const REG_KEY = process.env.REG_KEY as string
 const JWT_SECRET = process.env.JWT_SECRET as string
@@ -24,7 +23,6 @@ const AWS_S3_URL = process.env.AWS_S3_URL as string
 export {
    MONGO_URI,
    IP,
-   ORIGIN,
    PORT,
    REG_KEY,
    JWT_SECRET,

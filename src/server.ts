@@ -9,7 +9,7 @@ const app = express()
 app.get("/", (req: Request, res: Response) => {
    res.status(StatusCodes.OK).json({
       success: true,
-      message: "Cake Backend is Live",
+      message: "Backend is Live",
    })
 })
 

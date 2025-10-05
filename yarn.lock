@@ -699,6 +699,11 @@
   dependencies:
     sparse-bitfield "^3.0.3"
 
+"@scarf/scarf@=1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@scarf/scarf/-/scarf-1.4.0.tgz#3bbb984085dbd6d982494538b523be1ce6562972"
+  integrity sha512-xxeapPiUXdZAE3che6f3xogoJPeZgig6omHEy1rIY5WVsB3H2BHNnZH+gHG6x91SCWyQCzWGsuL2Hh3ClO5/qQ==
+
 "@smithy/abort-controller@^4.0.5":
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/@smithy/abort-controller/-/abort-controller-4.0.5.tgz#2872a12d0f11dfdcc4254b39566d5f24ab26a4ab"
@@ -1258,7 +1263,7 @@
     "@types/range-parser" "*"
     "@types/send" "*"
 
-"@types/express@^5.0.3":
+"@types/express@*", "@types/express@^5.0.3":
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/@types/express/-/express-5.0.3.tgz#6c4bc6acddc2e2a587142e1d8be0bce20757e956"
   integrity sha512-wGA0NX93b19/dZC1J18tKWVIYWyyF2ZjT9vin/NRu0qzzvfVzWjs04iq2rQ3H65vCTQYlRqs3YHfY7zjdV+9Kw==
@@ -1310,6 +1315,14 @@
     "@types/http-errors" "*"
     "@types/node" "*"
     "@types/send" "*"
+
+"@types/swagger-ui-express@^4.1.8":
+  version "4.1.8"
+  resolved "https://registry.yarnpkg.com/@types/swagger-ui-express/-/swagger-ui-express-4.1.8.tgz#3c0e0bf2543c7efb500eaa081bfde6d92f88096c"
+  integrity sha512-AhZV8/EIreHFmBV5wAs0gzJUNq9JbbSXgJLQubCC0jtIo6prnI9MIRRxnU4MZX9RB9yXxF1V4R7jtLl/Wcj31g==
+  dependencies:
+    "@types/express" "*"
+    "@types/serve-static" "*"
 
 "@types/uuid@^9.0.1":
   version "9.0.8"
@@ -2366,6 +2379,20 @@ supports-color@^5.5.0:
   integrity sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==
   dependencies:
     has-flag "^3.0.0"
+
+swagger-ui-dist@>=5.0.0:
+  version "5.29.3"
+  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-5.29.3.tgz#d94eed510c8f94dc7ca4ffef730d609b189bd652"
+  integrity sha512-U99f/2YocRA2Mxqx3eUBRhQonWVtE5dIvMs0Zlsn4a4ip8awMq0JxXhU+Sidtna2WlZrHbK2Rro3RZvYUymRbA==
+  dependencies:
+    "@scarf/scarf" "=1.4.0"
+
+swagger-ui-express@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/swagger-ui-express/-/swagger-ui-express-5.0.1.tgz#fb8c1b781d2793a6bd2f8a205a3f4bd6fa020dd8"
+  integrity sha512-SrNU3RiBGTLLmFU8GIJdOdanJTl4TOmT27tt3bWWHppqYmAZ6IDuEuBvMU6nZq0zLEe6b/1rACXCgLZqO6ZfrA==
+  dependencies:
+    swagger-ui-dist ">=5.0.0"
 
 to-regex-range@^5.0.1:
   version "5.0.1"

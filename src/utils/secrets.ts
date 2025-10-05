@@ -1,14 +1,14 @@
-import dotenv from "dotenv"
-import fs from "fs"
+import dotenv from 'dotenv'
+import fs from 'fs'
 
-if (fs.existsSync(".env")) {
-   dotenv.config({ path: ".env" })
+if (fs.existsSync('.env')) {
+   dotenv.config({ path: '.env' })
 } else {
-   console.error(".env file not found!")
+   console.error('.env file not found!')
 }
 
 const MONGO_URI = process.env.MONGO_URI as string
-const IP = (process.env.IP as string) || ""
+const IP = (process.env.IP as string) || ''
 const PORT = parseInt(process.env.PORT as string, 10) || 8080
 const REG_KEY = process.env.REG_KEY as string
 const JWT_SECRET = process.env.JWT_SECRET as string

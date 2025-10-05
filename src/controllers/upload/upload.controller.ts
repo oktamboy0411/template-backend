@@ -1,17 +1,17 @@
-import { exec } from "child_process"
-import fs from "fs"
-import { ReasonPhrases, StatusCodes } from "http-status-codes"
-import path from "path"
-import sharp from "sharp"
-import { v4 } from "uuid"
+import { exec } from 'child_process'
+import fs from 'fs'
+import { ReasonPhrases, StatusCodes } from 'http-status-codes'
+import path from 'path'
+import sharp from 'sharp'
+import { v4 } from 'uuid'
 
-import { UploadModel } from "../../models/upload"
+import { UploadModel } from '../../models/upload'
 import {
    HttpException,
    asyncHandler,
    deleteFile,
    uploadFile,
-} from "../../utils"
+} from '../../utils'
 
 export class UploadController {
    public static uploadFile = asyncHandler(async (req, res) => {
@@ -20,44 +20,44 @@ export class UploadController {
          throw new HttpException(
             StatusCodes.NOT_FOUND,
             ReasonPhrases.NOT_FOUND,
-            "File not provided",
+            'File not provided',
          )
       }
 
       let processedBuffer: Buffer | undefined
       let fileKey: string | undefined
 
-      if (uploadedFile.mimetype.split("/")[0] === "image") {
+      if (uploadedFile.mimetype.split('/')[0] === 'image') {
          processedBuffer = await sharp(uploadedFile.buffer)
             .rotate()
-            .toFormat("webp")
+            .toFormat('webp')
             .toBuffer()
-         fileKey = "image/" + v4() + ".webp"
+         fileKey = 'image/' + v4() + '.webp'
       }
 
-      if (uploadedFile.mimetype === "application/pdf") {
+      if (uploadedFile.mimetype === 'application/pdf') {
          // sudo apt install ghostscript
-         if (!fs.existsSync("./public/uploads")) {
-            fs.mkdirSync("./public/uploads", { recursive: true })
+         if (!fs.existsSync('./public/uploads')) {
+            fs.mkdirSync('./public/uploads', { recursive: true })
          }
 
          const inputPath = path.join(
             __dirname,
-            "..",
-            "..",
-            "..",
-            "public",
-            "uploads",
-            v4() + ".pdf",
+            '..',
+            '..',
+            '..',
+            'public',
+            'uploads',
+            v4() + '.pdf',
          )
          const outputPath = path.join(
             __dirname,
-            "..",
-            "..",
-            "..",
-            "public",
-            "uploads",
-            v4() + ".pdf",
+            '..',
+            '..',
+            '..',
+            'public',
+            'uploads',
+            v4() + '.pdf',
          )
 
          fs.writeFileSync(inputPath, uploadedFile.buffer)
@@ -67,19 +67,19 @@ export class UploadController {
          await new Promise<void>((resolve, reject) => {
             exec(gsCommand, error => {
                if (error) {
-                  console.error("Error compressing PDF:", error)
+                  console.error('Error compressing PDF:', error)
                   reject(
                      new HttpException(
                         StatusCodes.INTERNAL_SERVER_ERROR,
                         ReasonPhrases.INTERNAL_SERVER_ERROR,
-                        "Error compressing PDF",
+                        'Error compressing PDF',
                      ),
                   )
                }
                processedBuffer = fs.readFileSync(outputPath)
                fs.unlinkSync(inputPath)
                fs.unlinkSync(outputPath)
-               fileKey = "document/" + v4() + ".pdf"
+               fileKey = 'document/' + v4() + '.pdf'
                resolve()
             })
          })
@@ -89,7 +89,7 @@ export class UploadController {
          throw new HttpException(
             StatusCodes.BAD_REQUEST,
             ReasonPhrases.BAD_REQUEST,
-            "File not upload",
+            'File not upload',
          )
       }
 
@@ -99,7 +99,7 @@ export class UploadController {
          throw new HttpException(
             StatusCodes.BAD_REQUEST,
             ReasonPhrases.BAD_REQUEST,
-            "File not upload",
+            'File not upload',
          )
       }
 
@@ -117,7 +117,7 @@ export class UploadController {
          throw new HttpException(
             StatusCodes.NOT_FOUND,
             ReasonPhrases.NOT_FOUND,
-            "Files not provided",
+            'Files not provided',
          )
       }
 
@@ -126,36 +126,36 @@ export class UploadController {
             let processedBuffer: Buffer | undefined
             let fileKey: string | undefined
 
-            if (uploadedFile.mimetype.split("/")[0] === "image") {
+            if (uploadedFile.mimetype.split('/')[0] === 'image') {
                processedBuffer = await sharp(uploadedFile.buffer)
                   .rotate()
-                  .toFormat("webp")
+                  .toFormat('webp')
                   .toBuffer()
-               fileKey = "image/" + v4() + ".webp"
+               fileKey = 'image/' + v4() + '.webp'
             }
 
-            if (uploadedFile.mimetype === "application/pdf") {
-               if (!fs.existsSync("./public/uploads")) {
-                  fs.mkdirSync("./public/uploads", { recursive: true })
+            if (uploadedFile.mimetype === 'application/pdf') {
+               if (!fs.existsSync('./public/uploads')) {
+                  fs.mkdirSync('./public/uploads', { recursive: true })
                }
 
                const inputPath = path.join(
                   __dirname,
-                  "..",
-                  "..",
-                  "..",
-                  "public",
-                  "uploads",
-                  v4() + ".pdf",
+                  '..',
+                  '..',
+                  '..',
+                  'public',
+                  'uploads',
+                  v4() + '.pdf',
                )
                const outputPath = path.join(
                   __dirname,
-                  "..",
-                  "..",
-                  "..",
-                  "public",
-                  "uploads",
-                  v4() + ".pdf",
+                  '..',
+                  '..',
+                  '..',
+                  'public',
+                  'uploads',
+                  v4() + '.pdf',
                )
 
                fs.writeFileSync(inputPath, uploadedFile.buffer)
@@ -165,19 +165,19 @@ export class UploadController {
                await new Promise<void>((resolve, reject) => {
                   exec(gsCommand, error => {
                      if (error) {
-                        console.error("Error compressing PDF:", error)
+                        console.error('Error compressing PDF:', error)
                         reject(
                            new HttpException(
                               StatusCodes.INTERNAL_SERVER_ERROR,
                               ReasonPhrases.INTERNAL_SERVER_ERROR,
-                              "Error compressing PDF",
+                              'Error compressing PDF',
                            ),
                         )
                      }
                      processedBuffer = fs.readFileSync(outputPath)
                      fs.unlinkSync(inputPath)
                      fs.unlinkSync(outputPath)
-                     fileKey = "document/" + v4() + ".pdf"
+                     fileKey = 'document/' + v4() + '.pdf'
                      resolve()
                   })
                })
@@ -203,7 +203,7 @@ export class UploadController {
          throw new HttpException(
             StatusCodes.BAD_REQUEST,
             ReasonPhrases.BAD_REQUEST,
-            "Files not uploaded",
+            'Files not uploaded',
          )
       }
 
@@ -231,7 +231,7 @@ export class UploadController {
          return files.length.toString()
       } catch (error) {
          console.error(error)
-         return "Not"
+         return 'Not'
       }
    }
 }

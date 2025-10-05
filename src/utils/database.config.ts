@@ -1,6 +1,6 @@
-import { connect } from "mongoose"
+import { connect } from 'mongoose'
 
-import { MONGO_URI } from "./secrets"
+import { MONGO_URI } from './secrets'
 
 export const CONNECT_DB = async () => {
    try {

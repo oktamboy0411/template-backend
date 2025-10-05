@@ -2,8 +2,8 @@ import {
    DeleteObjectCommand,
    HeadObjectCommand,
    S3Client,
-} from "@aws-sdk/client-s3"
-import { Upload } from "@aws-sdk/lib-storage"
+} from '@aws-sdk/client-s3'
+import { Upload } from '@aws-sdk/lib-storage'
 
 import {
    AWS_S3_ACCESS_KEY_ID,
@@ -12,7 +12,7 @@ import {
    AWS_S3_REGION,
    AWS_S3_SECRET_ACCESS_KEY,
    AWS_S3_URL,
-} from "./secrets"
+} from './secrets'
 
 const s3Client = new S3Client({
    region: AWS_S3_REGION,
@@ -43,7 +43,7 @@ const uploadFile = async (
          return data.Location as string
       }
    } catch (error) {
-      console.error("Error uploading file:", error)
+      console.error('Error uploading file:', error)
    }
 }
 
@@ -59,7 +59,7 @@ const deleteFile = async (location: string): Promise<void> => {
          )
       }
    } catch (error) {
-      console.error("Error deleting object:", error)
+      console.error('Error deleting object:', error)
    }
 }
 
@@ -77,10 +77,10 @@ const checkFileExists = async (location: string): Promise<boolean> => {
       }
       return false
    } catch (error: any) {
-      if (error.name === "NotFound") {
+      if (error.name === 'NotFound') {
          return false
       }
-      console.error("Error checking file existence:", error)
+      console.error('Error checking file existence:', error)
       throw error
    }
 }

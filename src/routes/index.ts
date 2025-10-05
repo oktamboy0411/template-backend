@@ -1,3 +1,3 @@
-import { uploadRouter } from "./upload"
+import { uploadRouter } from './upload'
 
-export const Routes = [{ path: "/upload", router: uploadRouter }]
+export const Routes = [{ path: '/upload', router: uploadRouter }]

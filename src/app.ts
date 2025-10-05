@@ -1,19 +1,19 @@
-import cors from "cors"
-import helmet from "helmet"
-import contentSecurityPolicy from "helmet-csp"
-import { ReasonPhrases, StatusCodes } from "http-status-codes"
-import swaggerUi from "swagger-ui-express"
+import cors from 'cors'
+import helmet from 'helmet'
+import contentSecurityPolicy from 'helmet-csp'
+import { ReasonPhrases, StatusCodes } from 'http-status-codes'
+import swaggerUi from 'swagger-ui-express'
 
-import express, { Application, Request, Response, Router } from "express"
+import express, { Application, Request, Response, Router } from 'express'
 
-import { Routes } from "./routes"
+import { Routes } from './routes'
 import {
    CONNECT_DB,
    HttpException,
    IP,
    errorMiddleware,
    noAsyncHandler,
-} from "./utils"
+} from './utils'
 
 export class App {
    public app: Application
@@ -30,7 +30,7 @@ export class App {
    }
 
    private initializeConfig(): void {
-      this.app.set("trust proxy", `loopback, ${IP}`)
+      this.app.set('trust proxy', `loopback, ${IP}`)
       this.app.use(express.json())
       this.app.use(express.urlencoded({ extended: true }))
       this.app.use(helmet())
@@ -39,16 +39,16 @@ export class App {
       )
       this.app.use(
          cors({
-            origin: "*",
+            origin: '*',
             credentials: true,
          }),
       )
    }
 
    private initializeDocumentation(): void {
-      const swaggerDocument = require("./swaggers")
+      const swaggerDocument = require('./swaggers')
       this.app.use(
-         "/api-docs/",
+         '/api-docs/',
          swaggerUi.serveFiles(swaggerDocument),
          swaggerUi.setup(swaggerDocument),
       )
@@ -56,7 +56,7 @@ export class App {
 
    private initializeControllers(): void {
       this.app.get(
-         "/",
+         '/',
          noAsyncHandler((req: Request, res: Response) =>
             res.status(StatusCodes.OK).json({
                success: true,
@@ -67,11 +67,11 @@ export class App {
       Routes.forEach((controller: { path: string; router: Router }) => {
          this.app.use(controller.path, controller.router)
       })
-      this.app.use("*", () => {
+      this.app.use('*', () => {
          throw new HttpException(
             StatusCodes.NOT_FOUND,
             ReasonPhrases.NOT_FOUND,
-            "Endpoint not found!",
+            'Endpoint not found!',
          )
       })
    }

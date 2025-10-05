@@ -1,8 +1,8 @@
-import { ReasonPhrases, StatusCodes } from "http-status-codes"
+import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
-import { NextFunction, Request, Response } from "express"
+import { NextFunction, Request, Response } from 'express'
 
-import { HttpException } from "./http.exception"
+import { HttpException } from './http.exception'
 
 export const errorMiddleware = (
    error: HttpException,

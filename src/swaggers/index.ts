@@ -1,5 +1,5 @@
-import { Swagger, addSwaggerEndpoint } from "./main"
-import UploadSwagger from "./upload"
+import { Swagger, addSwaggerEndpoint } from './main'
+import UploadSwagger from './upload'
 
 addSwaggerEndpoint(Swagger, UploadSwagger)
 

@@ -1,9 +1,9 @@
-import cron from "node-cron"
+import cron from 'node-cron'
 
-import { UploadController } from "../controllers/upload"
+import { UploadController } from '../controllers/upload'
 
 export function CronJobs() {
-   cron.schedule("59 23 * * *", () => {
+   cron.schedule('59 23 * * *', () => {
       UploadController.deleteFileWithCron()
          .then(deletedFiles => {
             console.info(
@@ -11,7 +11,7 @@ export function CronJobs() {
             )
          })
          .catch(error => {
-            console.error("Error deleting files:", error)
+            console.error('Error deleting files:', error)
          })
    })
 }

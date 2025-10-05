@@ -1,8 +1,8 @@
-import { ReasonPhrases, StatusCodes } from "http-status-codes"
-import multer from "multer"
-import path from "path"
+import { ReasonPhrases, StatusCodes } from 'http-status-codes'
+import multer from 'multer'
+import path from 'path'
 
-import { HttpException } from "./http.exception"
+import { HttpException } from './http.exception'
 
 const checkFileType = (
    file: Express.Multer.File,
@@ -21,7 +21,7 @@ const checkFileType = (
          new HttpException(
             StatusCodes.UNPROCESSABLE_ENTITY,
             ReasonPhrases.UNPROCESSABLE_ENTITY,
-            "You can only upload image! Max size 50 MB!",
+            'You can only upload image! Max size 50 MB!',
          ),
       )
    }

@@ -1,4 +1,4 @@
-import { SwaggerEndpointType, SwaggerType } from "../../types"
+import { SwaggerEndpointType, SwaggerType } from '../../types'
 
 export function addSwaggerEndpoint(
    swagger: SwaggerType,

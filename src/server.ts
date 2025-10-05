@@ -1,9 +1,9 @@
-import "core-js/stable"
-import "regenerator-runtime/runtime"
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 
-import { App } from "./app"
-import { CronJobs } from "./utils"
-import { PORT } from "./utils/secrets"
+import { App } from './app'
+import { CronJobs } from './utils'
+import { PORT } from './utils/secrets'
 
 CronJobs()
 
@@ -15,15 +15,15 @@ app.listen(PORT, (error: any) => {
       return
    }
 
-   if (error.syscall !== "listen") {
+   if (error.syscall !== 'listen') {
       throw error
    }
 
    switch (error.code) {
-      case "EACCES":
+      case 'EACCES':
          console.error(`Port ${PORT} requires elevated privileges`)
          process.exit(1)
-      case "EADDRINUSE":
+      case 'EADDRINUSE':
          console.error(
             `Port ${PORT} is already in use! \n netstat -aon | findstr :${PORT} \n taskkill /PID 1234 /F`,
          )

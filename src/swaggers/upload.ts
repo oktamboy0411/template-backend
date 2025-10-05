@@ -1,21 +1,21 @@
 const UploadSwagger = {
-   endpoint: "upload",
+   endpoint: 'upload',
    paths: [
       {
-         path: "file",
+         path: 'file',
          body: {
             post: {
-               consumes: ["multipart/form-data"],
-               tags: ["Upload"],
+               consumes: ['multipart/form-data'],
+               tags: ['Upload'],
                requestBody: {
                   content: {
-                     "multipart/form-data": {
+                     'multipart/form-data': {
                         schema: {
-                           type: "object",
+                           type: 'object',
                            properties: {
                               file: {
-                                 type: "string",
-                                 format: "binary",
+                                 type: 'string',
+                                 format: 'binary',
                               },
                            },
                         },

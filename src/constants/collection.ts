@@ -1,3 +1,3 @@
 export const CollectionConstants = {
-   UPLOAD: "upload",
+   UPLOAD: 'upload',
 }

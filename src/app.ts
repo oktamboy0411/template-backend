@@ -67,11 +67,13 @@ export class App {
       Routes.forEach((controller: { path: string; router: Router }) => {
          this.app.use(controller.path, controller.router)
       })
-      this.app.use('*', () => {
-         throw new HttpException(
-            StatusCodes.NOT_FOUND,
-            ReasonPhrases.NOT_FOUND,
-            'Endpoint not found!',
+      this.app.all(/.*/, (req, res, next) => {
+         next(
+            new HttpException(
+               StatusCodes.NOT_FOUND,
+               ReasonPhrases.NOT_FOUND,
+               'Endpoint not found!',
+            ),
          )
       })
    }

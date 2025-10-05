@@ -5,10 +5,13 @@ import path from "path"
 import sharp from "sharp"
 import { v4 } from "uuid"
 
-import { SaveFileModel } from "../../models/save-file"
-import { asyncHandler } from "../../utils/async-handler"
-import { HttpException } from "../../utils/http.exception"
-import { deleteFile, uploadFile } from "../../utils/s3"
+import { UploadModel } from "../../models/upload"
+import {
+   HttpException,
+   asyncHandler,
+   deleteFile,
+   uploadFile,
+} from "../../utils"
 
 export class UploadController {
    public static uploadFile = asyncHandler(async (req, res) => {
@@ -100,7 +103,7 @@ export class UploadController {
          )
       }
 
-      await SaveFileModel.create({ file_path, user: req.user_id })
+      await UploadModel.create({ file_path, user: req.user_id })
 
       res.status(StatusCodes.CREATED).json({
          success: true,
@@ -189,7 +192,7 @@ export class UploadController {
                return null
             }
 
-            await SaveFileModel.create({ file_path, user: req.user_id })
+            await UploadModel.create({ file_path, user: req.user_id })
             return file_path
          }),
       )
@@ -214,7 +217,7 @@ export class UploadController {
       try {
          const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000)
          const files = (
-            await SaveFileModel.find(
+            await UploadModel.find(
                { is_use: false, created_at: { $lt: oneDayAgo } },
                null,
                { lean: true },
@@ -222,7 +225,7 @@ export class UploadController {
          ).map(item => item.file_path)
          for (const item of files) {
             void deleteFile(item)
-            await SaveFileModel.deleteOne({ file_path: item })
+            await UploadModel.deleteOne({ file_path: item })
          }
 
          return files.length.toString()

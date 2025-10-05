@@ -12,7 +12,7 @@ type AsyncFunction = (
 
 export const asyncHandler =
    (fn: AsyncFunction) =>
-   async (req: CustomRequest, res: Response, next: NextFunction) => {
+   async (req: Request, res: Response, next: NextFunction) => {
       try {
          await fn(req, res, next)
       } catch (error) {
@@ -28,7 +28,7 @@ type NoAsyncFunction = (
 
 export const noAsyncHandler =
    (fn: NoAsyncFunction) =>
-   (req: CustomRequest, res: Response, next: NextFunction) => {
+   (req: Request, res: Response, next: NextFunction) => {
       try {
          fn(req, res, next)
       } catch (error) {

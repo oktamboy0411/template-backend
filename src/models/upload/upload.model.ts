@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose"
 import { CollectionConstants } from "../../constants"
 import { CollectionConstantsType } from "../../types"
 
-interface DocumentI {
+export interface UploadDocumentI {
    user: object
    file_path: string
    is_use: boolean
@@ -11,7 +11,7 @@ interface DocumentI {
    created_at: Date
 }
 
-const documentSchema = new Schema<DocumentI>(
+const documentSchema = new Schema<UploadDocumentI>(
    {
       user: { type: Object },
       file_path: { type: String, required: true },
@@ -25,7 +25,7 @@ const documentSchema = new Schema<DocumentI>(
    { versionKey: false },
 )
 
-export const SaveFileModel = model<DocumentI>(
+export const UploadModel = model<UploadDocumentI>(
    CollectionConstants.UPLOAD,
    documentSchema,
    CollectionConstants.UPLOAD,

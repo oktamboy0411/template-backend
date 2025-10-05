@@ -3,4 +3,4 @@ import UploadSwagger from './upload'
 
 addSwaggerEndpoint(Swagger, UploadSwagger)
 
-export default Swagger
+export { Swagger }

@@ -1,7 +1,7 @@
 import { SwaggerType } from '../../types'
 
 export const Swagger: SwaggerType = {
-   openapi: '3.0.0',
+   openapi: '3.1.0',
    info: {
       title: 'API Documentation',
       description: 'This is the API documentation for the backend service.',

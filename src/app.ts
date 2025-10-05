@@ -7,6 +7,7 @@ import swaggerUi from 'swagger-ui-express'
 import express, { Application, Request, Response, Router } from 'express'
 
 import { Routes } from './routes'
+import { Swagger } from './swaggers'
 import {
    CONNECT_DB,
    HttpException,
@@ -46,11 +47,10 @@ export class App {
    }
 
    private initializeDocumentation(): void {
-      const swaggerDocument = require('./swaggers')
       this.app.use(
          '/api-docs/',
-         swaggerUi.serveFiles(swaggerDocument),
-         swaggerUi.setup(swaggerDocument),
+         swaggerUi.serveFiles(Swagger),
+         swaggerUi.setup(Swagger),
       )
    }
 

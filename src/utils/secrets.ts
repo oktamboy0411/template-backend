@@ -19,6 +19,7 @@ const AWS_S3_REGION = process.env.AWS_S3_REGION as string
 const AWS_S3_ACCESS_KEY_ID = process.env.AWS_S3_ACCESS_KEY_ID as string
 const AWS_S3_SECRET_ACCESS_KEY = process.env.AWS_S3_SECRET_ACCESS_KEY as string
 const AWS_S3_URL = process.env.AWS_S3_URL as string
+const OPENWEATHER_API_KEY = (process.env.OPENWEATHER_API_KEY as string) || ''
 
 export {
    MONGO_URI,
@@ -33,4 +34,5 @@ export {
    AWS_S3_ACCESS_KEY_ID,
    AWS_S3_SECRET_ACCESS_KEY,
    AWS_S3_URL,
+   OPENWEATHER_API_KEY,
 }

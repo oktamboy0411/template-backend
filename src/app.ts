@@ -2,6 +2,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 import contentSecurityPolicy from 'helmet-csp'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
+import path from 'path'
 import swaggerUi from 'swagger-ui-express'
 
 import express, { Application, Request, Response, Router } from 'express'
@@ -44,13 +45,19 @@ export class App {
             credentials: true,
          }),
       )
+
+      const publicDir = path.join(__dirname, 'public')
+      this.app.use('/public', express.static(publicDir))
    }
 
    private initializeDocumentation(): void {
       this.app.use(
          '/api-docs/',
          swaggerUi.serveFiles(Swagger),
-         swaggerUi.setup(Swagger),
+         swaggerUi.setup(Swagger, {
+            swaggerOptions: { persistAuthorization: true },
+            customJs: '/public/swagger-custom.js',
+         }),
       )
    }
 

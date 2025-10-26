@@ -1,7 +1,9 @@
 import { NextFunction, Request, Response } from 'express'
 
-interface CustomRequest extends Request {
-   user_id?: string
+import { UserDocumentI } from '../models'
+
+export interface CustomRequest extends Request {
+   user?: UserDocumentI
 }
 
 type AsyncFunction = (
@@ -12,7 +14,7 @@ type AsyncFunction = (
 
 export const asyncHandler =
    (fn: AsyncFunction) =>
-   async (req: Request, res: Response, next: NextFunction) => {
+   async (req: CustomRequest, res: Response, next: NextFunction) => {
       try {
          await fn(req, res, next)
       } catch (error) {
@@ -28,7 +30,7 @@ type NoAsyncFunction = (
 
 export const noAsyncHandler =
    (fn: NoAsyncFunction) =>
-   (req: Request, res: Response, next: NextFunction) => {
+   (req: CustomRequest, res: Response, next: NextFunction) => {
       try {
          fn(req, res, next)
       } catch (error) {

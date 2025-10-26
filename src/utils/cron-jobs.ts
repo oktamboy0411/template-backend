@@ -1,6 +1,6 @@
 import cron from 'node-cron'
 
-import { UploadController } from '../controllers/upload'
+import { UploadController } from '../controllers'
 
 export function CronJobs() {
    cron.schedule('59 23 * * *', () => {

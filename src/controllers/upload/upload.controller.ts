@@ -5,7 +5,7 @@ import path from 'path'
 import sharp from 'sharp'
 import { v4 } from 'uuid'
 
-import { UploadModel } from '../../models/upload'
+import { UploadModel } from '../../models'
 import {
    HttpException,
    asyncHandler,
@@ -103,7 +103,7 @@ export class UploadController {
          )
       }
 
-      await UploadModel.create({ file_path, user: req.user_id })
+      await UploadModel.create({ file_path, user: req.user?._id })
 
       res.status(StatusCodes.CREATED).json({
          success: true,
@@ -192,7 +192,7 @@ export class UploadController {
                return null
             }
 
-            await UploadModel.create({ file_path, user: req.user_id })
+            await UploadModel.create({ file_path, user: req.user?._id })
             return file_path
          }),
       )

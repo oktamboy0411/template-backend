@@ -18,7 +18,7 @@ export const Swagger: SwaggerType = {
          description: 'Development server',
       },
       {
-         url: 'https://api.example.com',
+         url: 'https://jayron-med.onrender.com',
          description: 'Production server',
       },
    ],

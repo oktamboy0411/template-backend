@@ -281,4 +281,4 @@ const UserSwagger = {
    ],
 }
 
-export { UserSwagger }
+export default UserSwagger 

@@ -153,6 +153,17 @@ const UserSwagger = {
             get: {
                tags: ['User'],
                summary: 'Get a single user by id',
+               parameters: [
+                  {
+                     name: 'id',
+                     in: 'path',
+                     required: true,
+                     schema: {
+                        type: 'string',
+                        example: '64b8f1a2c3d4e5f6a7b8c9d0',
+                     },
+                  },
+               ],
                responses: {
                   '200': {
                      description: 'User object',
@@ -200,6 +211,17 @@ const UserSwagger = {
             put: {
                tags: ['User'],
                summary: 'Update a user',
+               parameters: [
+                  {
+                     name: 'id',
+                     in: 'path',
+                     required: true,
+                     schema: {
+                        type: 'string',
+                        example: '64b8f1a2c3d4e5f6a7b8c9d0',
+                     },
+                  },
+               ],
                requestBody: {
                   required: true,
                   content: {
@@ -238,6 +260,17 @@ const UserSwagger = {
             delete: {
                tags: ['User'],
                summary: 'Delete a user by id',
+               parameters: [
+                  {
+                     name: 'id',
+                     in: 'path',
+                     required: true,
+                     schema: {
+                        type: 'string',
+                        example: '64b8f1a2c3d4e5f6a7b8c9d0',
+                     },
+                  },
+               ],
                responses: {
                   '200': { description: 'User deleted successfully' },
                   '404': { description: 'User not found' },
@@ -248,4 +281,4 @@ const UserSwagger = {
    ],
 }
 
-export default UserSwagger
+export { UserSwagger }
